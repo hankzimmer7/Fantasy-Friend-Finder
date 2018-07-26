@@ -40,16 +40,16 @@ var friendArray = [
       "name": "Aeris",
       "photo": "https://vignette.wikia.nocookie.net/finalfantasy/images/e/e4/Aeris_Portrait.jpg/revision/latest?cb=20080926214002",
       "scores":[
-        "5",
+        "3",
+        "1",
+        "3",
         "5",
         "4",
+        "2",
         "1",
         "2",
         "3",
-        "4",
-        "3",
-        "2",
-        "4"
+        "1"
       ]
     }
   ];
