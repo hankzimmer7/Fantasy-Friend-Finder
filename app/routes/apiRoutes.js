@@ -33,8 +33,7 @@ module.exports = function (app) {
         // It will do this by sending out the value "true" have a table
         // req.body is available since we're using the body-parser middleware
         friendData.push(req.body);
-        // Not sure if I need the below?
-        //   res.json(true);
+        res.json(true);
     });
 
 
@@ -42,10 +41,59 @@ module.exports = function (app) {
     // I added this below code so you could clear out the table while working with the functionality.
     // Don"t worry about it!
 
-    app.post("/api/clear", function () {
+    app.post("/api/reset", function () {
         // Empty out the arrays of data
-        friendsData = [];
+        friendData = [
+            {
+              "name": "Cloud",
+              "photo": "https://vignette.wikia.nocookie.net/finalfantasy/images/3/32/Cloud_Portrait.jpg/revision/latest?cb=20080926214004",
+              "scores":[
+                "2",
+                "2",
+                "4",
+                "4",
+                "5",
+                "3",
+                "2",
+                "4",
+                "4",
+                "5"
+              ]
+            },
+            {
+              "name": "Tifa",
+              "photo": "https://vignette.wikia.nocookie.net/finalfantasy/images/0/0a/Tifa_Portrait.jpg/revision/latest?cb=20130203034455",
+              "scores":[
+                "2",
+                "4",
+                "1",
+                "5",
+                "3",
+                "5",
+                "4",
+                "3",
+                "4",
+                "5"
+              ]
+            },
+            {
+              "name": "Aeris",
+              "photo": "https://vignette.wikia.nocookie.net/finalfantasy/images/e/e4/Aeris_Portrait.jpg/revision/latest?cb=20080926214002",
+              "scores":[
+                "5",
+                "5",
+                "4",
+                "1",
+                "2",
+                "3",
+                "4",
+                "3",
+                "2",
+                "4"
+              ]
+            }
+          ];
 
-        console.log(friendsData);
+        console.log(friendData);
     });
 };
