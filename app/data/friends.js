@@ -35,7 +35,7 @@ var friendArray = [
         4,
         5
       ]
-    }
+    },
     {
       "name": "Aeris",
       "photo": "https://vignette.wikia.nocookie.net/finalfantasy/images/e/e4/Aeris_Portrait.jpg/revision/latest?cb=20080926214002",
