@@ -9,10 +9,8 @@ var friendData = require("../data/friends");
 // ===============================================================================
 
 module.exports = function (app) {
+
   // API GET Requests
-  // Below code handles when users "visit" a page.
-  // In each of the below cases when a user visits a link
-  // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
   // ---------------------------------------------------------------------------
 
   app.get("/api/friends", function (req, res) {
@@ -21,11 +19,6 @@ module.exports = function (app) {
 
 
   // API POST Requests
-  // Below code handles when a user submits a form and thus submits data to the server.
-  // In each of the below cases, when a user submits form data (a JSON object)
-  // ...the JSON is pushed to the appropriate JavaScript array
-  // (ex. User fills out a reservation request... this data is then sent to the server...
-  // Then the server saves the data to the tableData array)
   // ---------------------------------------------------------------------------
 
   app.post("/api/friends", function (req, res) {
@@ -39,7 +32,6 @@ module.exports = function (app) {
       var compatabilityScore = 0;
       for (var j = 0; j < newUserScores.length; j++) {
         compatabilityScore = compatabilityScore + Math.abs(friendData[i].scores[j] - parseFloat(newUserScores[j]));
-        console.log("The type of compatability score is " + typeof (compatabilityScore));
       }
       compatabilityArray.push({
         name: friendData[i].name,
@@ -49,19 +41,20 @@ module.exports = function (app) {
     }
     console.log(compatabilityArray);
 
-
     // Initially set the match to be the first user in the array
     var matchName = compatabilityArray[0].name;
     var matchCompatability = compatabilityArray[0].compatability;
     var matchIndex = 0;
 
-    console.log("Match initialized at the first user, " + compatabilityArray[0].name + " who has a compatability score of " + compatabilityArray[0].compatability);
+    console.log("Match initialized at the first user, " + compatabilityArray[0].name + ", who has a compatability score of " + compatabilityArray[0].compatability);
 
     // Go through the compatability array, and if a closer match is found, set that user as the match
     for (var i = 1; i < compatabilityArray.length; i++) {
+
       console.log("Checking against user " + compatabilityArray[i].name + " who has a compatability score of " + compatabilityArray[i].compatability);
 
       console.log("The comparison of " + compatabilityArray[i].compatability + " being less than " + matchCompatability + " is found to be " + (compatabilityArray[i].compatability < matchCompatability));
+
       if (compatabilityArray[i].compatability < matchCompatability) {
         matchName = compatabilityArray[i].name;
         matchCompatability = compatabilityArray[i].compatability;
@@ -76,7 +69,9 @@ module.exports = function (app) {
     var matchObject = friendData[matchIndex];
 
     friendData.push(req.body);
+
     console.log("Added " + req.body.name + " to the API.")
+    
     res.json(matchObject);
   });
 
