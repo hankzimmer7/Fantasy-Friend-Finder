@@ -1,7 +1,7 @@
-# Friend-Finder
+# Fantasy Friend Finder
 
-Deployed at https://warm-tundra-64360.herokuapp.com/
+Deployed at https://fantasy-friend-finder.herokuapp.com/
 
 ## Description:
 
-Friend Finder asks the user a series of questions to determine their compatability with other users, and then displays their closest match.
+Fantasy Friend Finder asks the user a series of questions to determine their compatability with other fantasy friends, and then displays their closest match. Once the user submits their answers, they are added to the pool of users and may be a match for future users.

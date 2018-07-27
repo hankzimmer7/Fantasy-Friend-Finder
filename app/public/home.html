@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Friend Finder</title>
+    <title>Fantasy Friend Finder</title>
 
     <!-- Link to jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -16,6 +16,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+    <!-- Link to style sheets -->
+    <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -23,34 +27,37 @@
     <div class="container">
         <div class="jumbotron">
             <div class="row">
-                <div class="col">
-                    <h1> Friend Finder</h1>
+                <div class="col text-center">
+                    <img class="text-center frontpage-pic" src="images/chocobo.png" />
+                    <h1>FANTASY FRIEND FINDER</h1>
                     <hr>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <h2>Answer a few basic questions. </h2>
-                    <h2>Then find the friend with the best compatability!</h2>
+                    <h2 class="frontpage-tagline">Discover your most compatable fantasy friend!</h2>
                 </div>
             </div>
-            <div>
-                <a href="/survey">
-                    <button class="btn btn-lg btn-primary">Take the Survey!</button>
-                </a>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <a href="/survey">
+                        <button class="btn btn-lg btn-block btn-primary">Take the Survey!</button>
+                    </a>
+                </div>
             </div>
         </div>
-
-        <footer class="footer">
-            <div class="container">
-                <p>
-                    <a target="_blank" href="/api/friends">Friends API Link</a> |
-                    <a target="_blank" href="https://github.com/hankzimmer7/Friend-Finder">GitHub Repo</a> |
-                    <a href="#" id="reset">Reset the Friend List</a>
-                </p>
-            </div>
-        </footer>
     </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-center">
+                <a target="_blank" href="/api/friends">Friends API</a> |
+                <a target="_blank" href="https://github.com/hankzimmer7/Friend-Finder">GitHub Repo</a> |
+                <a href="#" id="reset">Reset Friend List</a>
+            </p>
+        </div>
+    </footer>
 
 </body>
 
@@ -65,11 +72,10 @@
             url: currentURL + "/api/reset",
             method: "POST"
         });
-
     }
 
     $("#reset").on("click", function () {
-        alert("Resetting the Friend List...");
+        alert("The fantasy friend list has been reset back to default.");
         clearFriends();
 
         // Refresh the page after data is cleared

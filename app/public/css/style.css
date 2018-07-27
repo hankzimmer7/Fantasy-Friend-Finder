@@ -1,4 +1,45 @@
+body {
+    background-color: rgb(20, 20, 50);
+}
+
+h1 {
+    font-size: 4.5rem;
+    text-align: center;
+    font-family: 'Merienda', cursive;
+}
+
+h2 {
+    font-size: 3.5rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+p {
+    color:white;
+}
+
+a {
+    color: rgb(200, 200, 200);
+}
+
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.jumbotron {
+    background-color: white;
+}
+
+.frontpage-tagline {
+    font-size: 2rem;
+}
+
 /* The results Modal */
+
 .modal {
     display: none;
     position: fixed;
@@ -21,6 +62,7 @@
 }
 
 /* The close button for the result modal */
+
 .close {
     color: #aaa;
     float: right;
@@ -33,4 +75,92 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Large devices (desktops, less than 1200px) */
+
+@media screen and (max-width: 1199.98px) {
+    h1 {
+        font-size: 4rem;
+    }
+    h2 {
+        font-size: 3rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Medium devices (tablets, less than 992px) */
+
+@media screen and (max-width: 991.98px) {
+    h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1.2rem;
+    }
+    .frontpage-tagline {
+        font-size: 1.5rem;
+    }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+
+@media screen and (max-width: 767.98px) {
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    .frontpage-tagline {
+        font-size: 1.2rem;
+    }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+
+@media screen and (max-width: 575.98px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    h2 {
+        font-size: 1.2rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    .frontpage-tagline {
+        font-size: 1rem;
+    }
+    .frontpage-pic {
+        width: 50%;
+    }
+}
+
+/* Tiny devices */
+
+@media screen and (max-width: 420px) {
+    h1 {
+        font-size: 1rem;
+    }
+    h2 {
+        font-size: 1rem;
+    }
+    label {
+        font-size: .75rem;
+    }
+    option {
+        font-size: .75rem;
+    }
+    a {
+        font-size: .75rem;
+    }
+    .btn {
+        font-size: 1rem;
+    }
 }

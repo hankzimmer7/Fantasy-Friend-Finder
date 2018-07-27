@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Friend Finder Survey</title>
+    <title>Fantasy Friend Finder Survey</title>
 
     <!-- Link to jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -16,7 +16,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
-    <!-- Link to style sheet -->
+    <!-- Link to style sheets -->
+    <link href="https://fonts.googleapis.com/css?family=Merienda" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -27,7 +28,7 @@
         <div class="jumbotron">
             <div class="row">
                 <div class="col">
-                    <h1> Friend Finder</h1>
+                    <h1>FANTASY FRIEND FINDER</h1>
                     <hr>
                 </div>
             </div>
@@ -39,24 +40,17 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <h3> About You</h2>
-                        <form role="form">
-                            <div class="form-group">
-                                <label for="name">Name (required)</label>
-                                <input type="text" class="form-control" id="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="photo">Link to Photo Image (required)</label>
-                                <input type="text" class="form-control" id="photo">
-                            </div>
-                        </form>
-                        <hr>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
+                    <h3> About You</h3>
                     <form role="form">
-
+                        <div class="form-group">
+                            <label for="name">Name (required)</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="photo">Link to Photo Image (required)</label>
+                            <input type="text" class="form-control" id="photo">
+                        </div>
+                        <hr>
                         <div class="form-group">
                             <h3>Question 1</h3>
                             <label>Your mind is always buzzing with unexplored ideas and plans.</label>
@@ -168,44 +162,38 @@
                                 <option>5 (strongly agree)</option>
                             </select>
                         </div>
-
+                        <hr>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block submit">Submit</button>
                     </form>
-                    <hr>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block submit">Submit</button>
-
-                    <!-- Trigger/Open The Modal -->
-                    <!-- <button id="myBtn">Open Modal</button> -->
-
-                    <!-- The Modal -->
-                    <div id="results-modal" class="modal">
-
-                        <!-- Modal content -->
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <h3>You matched with:</h3>
-                            <div class="row">
-                                <div class="col text-center">
-                                    <h3 class="text-center" id="match-name"></h3>
-                                    <img class="text-center" id="match-image" />
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <footer class="footer">
-            <div class="container">
-                <p>
-                    <a target="_blank" href="/api/friends">Friends API Link</a> |
-                    <a target="_blank" href="https://github.com/hankzimmer7/Friend-Finder">GitHub Repo</a> |
-                    <a href="#" id="reset">Reset the Friend List</a>
-                </p>
+    <footer class="footer">
+        <div class="container">
+            <p class = "text-center">
+                <a target="_blank" href="/api/friends">Friends API</a> |
+                <a target="_blank" href="https://github.com/hankzimmer7/Friend-Finder">GitHub Repo</a> |
+                <a href="#" id="reset">Reset Friend List</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Results Modal -->
+    <div id="results-modal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>You matched with:</h3>
+            <div class="row">
+                <div class="col text-center">
+                    <h3 class="text-center" id="match-name"></h3>
+                    <img class="text-center" id="match-image" />
+                </div>
             </div>
-        </footer>
-
+        </div>
     </div>
 
 </body>
@@ -311,7 +299,7 @@
         }
 
         $("#reset").on("click", function () {
-            alert("Resetting the Friend List...");
+            alert("The fantasy friend list has been reset back to default.");
             clearFriends();
 
             // Refresh the page after data is cleared
