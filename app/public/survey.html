@@ -214,94 +214,108 @@
 
 <!-- Script for handling data sent to server -->
 <script type="text/javascript">
-    $(".submit").on("click", function (event) {
-        event.preventDefault();
-
-        var name = $("#name").val().trim();
-        var photo = $("#photo").val().trim();
-        var scores = [];
-        console.log($('#question1').val());
+    $(document).ready(function () {
+        //Initially clear the question entries
         for (var i = 1; i <= 10; i++) {
-            scores.push($("#question" + i).val().charAt(0));
+            $("#question" + i).val("");
         }
 
-        // Here we grab the form elements
-        var newFriend = {
-            name: name,
-            photo: photo,
-            scores: scores
-        };
+        $(".submit").on("click", function (event) {
+            event.preventDefault();
 
-        console.log(newFriend);
+            //Grab the data from the inputs
+            var name = $("#name").val().trim();
+            console.log("Name is " + name);
+            var photo = $("#photo").val().trim();
+            console.log("Photo is " + photo);
+            var scores = [];
 
-        $.post("/api/friends", newFriend,
-            function (data) {
+            //Initially all fields are assumed to be complete. Then set this variable to false later if a field is found incomplete.
+            var allFieldsComplete = true;
 
-                // alert("Your info has been saved! I need to find you a match...");
+            if (name === "" || photo === "") {
+                allFieldsComplete = false;
+            }
 
-                console.log("The match is " + data.name);
-                console.log("The match photo is " + data.photo);
-                $("#match-name").text(data.name);
-                $("#match-image").attr("src", data.photo);
-                console.log(data);
-
-                modal.style.display = "block";
-
-                // Clear the form when submitting
-                $("#name").val("");
-                $("#photo").val("");
-                for (var i = 1; i <= 10; i++) {
-                    $("#question" + i).val("");
+            for (var i = 1; i <= 10; i++) {
+                var newScore = $("#question" + i).val();
+                console.log("Score value for question " + (i) + " is " + newScore);
+                if (newScore != null) {
+                    scores.push($("#question" + i).val().charAt(0));
+                } else {
+                    allFieldsComplete = false;
+                    console.log("Set all fields complete to false");
                 }
-            });
-    });
+            }
+            if (allFieldsComplete) {
+                //Create a new object for the user's responses
+                var newFriend = {
+                    name: name,
+                    photo: photo,
+                    scores: scores
+                };
 
-    //This displays the popup with the results
-    // Get the modal
-    var modal = document.getElementById('results-modal');
+                console.log(newFriend);
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
+                $.post("/api/friends", newFriend,
+                    function (data) {
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+                        console.log("The match is " + data.name);
+                        console.log("The match photo is " + data.photo);
+                        $("#match-name").text(data.name);
+                        $("#match-image").attr("src", data.photo);
+                        console.log(data);
 
-    // When the user clicks on the button, open the modal 
-    // btn.onclick = function () {
-    //     modal.style.display = "block";
+                        modal.style.display = "block";
 
+                        // Clear the form when submitting
+                        $("#name").val("");
+                        $("#photo").val("");
+                        for (var i = 1; i <= 10; i++) {
+                            $("#question" + i).val("");
+                        }
+                    });
 
-    // }
+            } else {
+                alert("You must complete all fields!");
+            }
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    // This function resets all of the data in our tables. This is intended to let you restart a demo.
-    function clearFriends() {
-
-        var currentURL = window.location.origin;
-        $.ajax({
-            url: currentURL + "/api/reset",
-            method: "POST"
         });
 
-    }
+        //This displays the popup with the results
+        // Get the modal
+        var modal = document.getElementById('results-modal');
 
-    $("#reset").on("click", function () {
-        alert("Resetting the Friend List...");
-        clearFriends();
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-        // Refresh the page after data is cleared
-        location.reload();
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
 
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // This function resets all of the data in the tables. This is intended to let you restart a demo.
+        function clearFriends() {
+            var currentURL = window.location.origin;
+            $.ajax({
+                url: currentURL + "/api/reset",
+                method: "POST"
+            });
+        }
+
+        $("#reset").on("click", function () {
+            alert("Resetting the Friend List...");
+            clearFriends();
+
+            // Refresh the page after data is cleared
+            location.reload();
+        });
     });
 </script>
