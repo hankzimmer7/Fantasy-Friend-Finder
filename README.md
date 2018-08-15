@@ -8,8 +8,6 @@ Fantasy Friend Finder asks the user a series of questions to determine their com
 
 ## Technologies Used:
 
-* Javascript
-
+* JavaScript
 * express.js
-
 * Heroku deployment
